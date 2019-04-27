@@ -38,3 +38,25 @@ void InsertEdge(MGragh Graph, Edge E) {
 	//若为无向图，则还要插入边<V2,V1>
 	Graph->G[E->V2][E->V1] = E->Weight;
 }
+
+//建立图；
+MGragh BuildGraph() {
+	MGragh Graph;
+	Edge E;
+	Vertex V;
+	int vexnum, i;
+	scanf("%d", &vexnum);  //输入顶点数
+	Graph = CreateGraph(vexnum);
+	scanf("%d", &(Graph->arcnum)); //输入边数
+	if (Graph->arcnum != 0) {
+		E = (Edge)malloc(sizeof(struct ENode));
+		for (i = 0; i < Graph->arcnum; i++) {
+			scanf("%d %d %d", &E->V1, &E->V2, &E->Weight);
+			InsertEdge(Graph, E);
+		}
+	}
+	for (V = 0; V < Graph->vexnum; i++)
+		scanf("%c", &(Graph->Data[V]));
+
+	return Graph;
+}
